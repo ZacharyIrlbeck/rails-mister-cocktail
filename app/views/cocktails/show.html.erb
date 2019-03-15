@@ -3,6 +3,7 @@
   <%= @cocktail.name %>
   <% @cocktail.doses.each do |dose| %>
   <%= link_to "Delete", dose_path(dose), method: :delete %>
+  <%= cl_image_tag("san_francisco, width: 150, height: 150, crob: :thumb, gravity: :face") %>
   <%= dose.description %>
   <%= dose.ingredient.name %>
   <% end %>
