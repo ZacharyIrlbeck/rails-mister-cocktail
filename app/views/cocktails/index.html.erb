@@ -2,7 +2,7 @@
 <div class="container">
   <ul>
     <% @cocktails.each do |cocktail| %>
-    <%= cl_image_tag("san_francisco", width:400, height: 300, crop: fill) %>
+    <%= cl_image_tag("san_francisco", width:400, height: 300, crop:  :fill) %>
     <%= link_to cocktail.name, cocktail_path(cocktail) %>
     <% end %>
   </ul>
