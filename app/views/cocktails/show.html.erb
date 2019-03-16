@@ -1,13 +1,42 @@
-<h1>Your Cocktail</h1>
+
 <div class="container">
-  <%= @cocktail.name %>
-  <% @cocktail.doses.each do |dose| %>
-  <%= link_to "Delete", dose_path(dose), method: :delete %>
-  <%= cl_image_tag("san_francisco", width: 150, height: 150, crop: :thumb, gravity: :face) %>
-  <%= dose.description %>
-  <%= dose.ingredient.name %>
-  <% end %>
+  <div class="card-trip">
+   <!-- Here the login inside the src to interpolate the cocktail image into the card header -->
+    <img src="<% if @cocktail.photo.present? %>
+                  <%= cl_image_path @cocktail.photo, crop: :fill %>
+                <% else %>
+                   <%=  "https://images.unsplash.com/photo-1552353854-b2d8adc44027?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" %>
+
+            <% end %>">
+    <div class="card-trip-infos myinfo">
+      <div class='text-center'>
+        <strong><%=@cocktail.name%></strong>
+
+      </div>
+
+    </div>
+
+    <div class="text-center">
+      <%= link_to "Add an ingredient!", new_cocktail_dose_path(params[:id]), {class: "btn btn-primary"} %>
+      <%= link_to "Go home", root_path, {class: "btn btn-primary"} %>
+    </div>
+  </div>
+
+  <br><br>
+
+  <div class="col-md-6 offset-md-3 text-center ingredients">
+    <ul class="list-group">
+      <li class="list-group-item">
+          <% @cocktail.doses.each do |dose| %>
+            <p> <small> <%= dose.ingredient.name %> </small></p>
+            <p> <%= dose.description %> </p>
+            <p> <%= link_to "Delete", dose_path(dose), method: :delete %> </p>
+          <% end %>
+      </li>
+    </ul>
+  </div>
+
 </div>
 
-<%= link_to "Add a dose", new_cocktail_dose_path(params[:id]) %>
-<%= link_to "Go home", root_path %>
+
+

@@ -1,6 +1,11 @@
-<h1>Add a Cocktails</h1>
-<%= simple_form_for @cocktail do |t| %>
-<%= t.input :name %>
-<%= t.input :photo %>
-<%= t.input :photo_cache, as: :hidden %>
-<% end %>
+
+<div class="col-md-6 offset-md-3">
+  <h1>Add Cocktails</h1>
+  <%= simple_form_for @cocktail do |t| %>
+  <%= t.input :name %>
+  <%= t.input :photo %>
+  <%= t.input :photo_cache, as: :hidden  %>
+  <%= t.submit %>
+  <% end %>
+  <%= link_to "Go Home", root_path %>
+</div>

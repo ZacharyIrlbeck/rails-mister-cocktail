@@ -1,13 +1,28 @@
-<h1>The Total List of Cocktails</h1>
+  <%= render "/shared/banner" %>
+
 <div class="container">
-  <ul>
-    <% @cocktails.each do |cocktail| %>
-    <% if cocktail.photo.present? %>
-      <%= cl_image_tag cocktail.photo, width:400, height: 300, crop:  :fill %>
-    <% end %>
-    <%= link_to cocktail.name, cocktail_path(cocktail) %>
-    <% end %>
-  </ul>
+
+  <div class="cards">
+      <% @cocktails.each do |cocktail| %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
+            <% if cocktail.photo.present? %>
+              <%= cl_image_path cocktail.photo, crop: :fill %>
+            <% else %>
+              'https://images.unsplash.com/photo-1552353854-b2d8adc44027?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60'
+            <% end %>)">
+          <%= link_to cocktail.name, cocktail_path(cocktail) %>
+        </div>
+      <% end %>
+  </div>
 </div>
 
-<%= link_to "Create a cocktail!", new_cocktail_path %>
+<!-- idea for design
+
+navbar - for each page just a easy nav menu
+
+homepage/index - banner with clickable cards, a nice button to add a cocktail
+
+add cocktail - just a nice and simple for, centered, rounded button -->
+
+
+
